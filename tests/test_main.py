@@ -4,7 +4,7 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
-from tweet_analysis_agent.main import handler, initialize_agent
+from tweet_analysis_agent.main import handler
 
 
 @pytest.mark.asyncio

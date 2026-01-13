@@ -89,7 +89,7 @@ async def initialize_agent() -> None:
     openai_api_key = os.getenv("OPENAI_API_KEY")
     openrouter_api_key = os.getenv("OPENROUTER_API_KEY")
     model_name = os.getenv("MODEL_NAME", "openai/gpt-4o")
-    
+
     # Get X/Twitter API credentials
     x_consumer_key = os.getenv("X_CONSUMER_KEY")
     x_consumer_secret = os.getenv("X_CONSUMER_SECRET")
@@ -146,7 +146,7 @@ async def initialize_agent() -> None:
             You are a senior Brand Intelligence Analyst specializing in social media
             listening on X (Twitter). Your mission is to transform raw tweet content
             and engagement metrics into executive-ready intelligence reports.
-            
+
             Expertise includes:
             - Real-time tweet analysis and sentiment classification
             - Engagement metrics analysis (likes, retweets, replies, reach)
@@ -192,45 +192,45 @@ async def initialize_agent() -> None:
         """),
         expected_output=dedent("""\
             # Social Media Intelligence Report 📊
-            
+
             ## Brand Health Score: {score}/10
-            
+
             ## Executive Summary
             {Concise overview of brand sentiment, key findings, and overall health}
-            
+
             ## Sentiment Analysis
             - Positive Sentiment: {percentage}% ({count} tweets)
             - Negative Sentiment: {percentage}% ({count} tweets)
             - Neutral Sentiment: {percentage}% ({count} tweets)
             - Mixed Sentiment: {percentage}% ({count} tweets)
-            
+
             ## Key Themes & Topics
             {Top themes with representative quotes and engagement metrics}
-            
+
             ## Engagement Analysis
             - Total Engagement: {total}
             - Average Engagement per Tweet: {average}
             - Top Performing Tweet: {engagement} (content preview)
-            
+
             ## Influencer Impact
             {Verified accounts and influencers with significant reach}
-            
+
             ## Risk Assessment
             {Critical issues, complaints, and potential crises}
-            
+
             ## Strategic Recommendations
             ### Immediate Actions (Next 24-48 hours)
             {Priority responses and monitoring needs}
-            
+
             ### Short-term Initiatives (Next 1-2 weeks)
             {Engagement opportunities and content strategy}
-            
+
             ### Long-term Strategy (Next 1-3 months)
             {Brand positioning and competitive response}
-            
+
             ## Response Playbook
             {Template responses for common scenarios and high-impact posts}
-            
+
             ---
             Analysis conducted by AI Social Media Intelligence Agent
             Report Generated: {current_date}
@@ -275,9 +275,10 @@ async def cleanup() -> None:
     print("🧹 Cleaning up Tweet Analysis Agent resources...")
 
 
-def main():
-    """Run the main entry point for the Tweet Analysis Agent."""
+def create_argument_parser() -> argparse.ArgumentParser:
+    """Create and configure the argument parser."""
     parser = argparse.ArgumentParser(description="Bindu Tweet Analysis Agent")
+
     parser.add_argument(
         "--openai-api-key",
         type=str,
@@ -331,32 +332,30 @@ def main():
         type=str,
         help="Path to agent_config.json (optional)",
     )
-    args = parser.parse_args()
 
-    # Set environment variables if provided via CLI
-    if args.openai_api_key:
-        os.environ["OPENAI_API_KEY"] = args.openai_api_key
-    if args.openrouter_api_key:
-        os.environ["OPENROUTER_API_KEY"] = args.openrouter_api_key
-    if args.model:
-        os.environ["MODEL_NAME"] = args.model
-    if args.x_consumer_key:
-        os.environ["X_CONSUMER_KEY"] = args.x_consumer_key
-    if args.x_consumer_secret:
-        os.environ["X_CONSUMER_SECRET"] = args.x_consumer_secret
-    if args.x_access_token:
-        os.environ["X_ACCESS_TOKEN"] = args.x_access_token
-    if args.x_access_token_secret:
-        os.environ["X_ACCESS_TOKEN_SECRET"] = args.x_access_token_secret
-    if args.x_bearer_token:
-        os.environ["X_BEARER_TOKEN"] = args.x_bearer_token
+    return parser
 
-    print("🤖 Tweet Analysis Agent - Social Media Intelligence AI")
-    print("📊 Capabilities: Tweet sentiment analysis, brand monitoring, competitive intelligence")
 
-    # Load configuration
-    config = load_config()
+def set_environment_variables(args) -> None:
+    """Set environment variables from command-line arguments."""
+    env_vars = {
+        "OPENAI_API_KEY": args.openai_api_key,
+        "OPENROUTER_API_KEY": args.openrouter_api_key,
+        "MODEL_NAME": args.model,
+        "X_CONSUMER_KEY": args.x_consumer_key,
+        "X_CONSUMER_SECRET": args.x_consumer_secret,
+        "X_ACCESS_TOKEN": args.x_access_token,
+        "X_ACCESS_TOKEN_SECRET": args.x_access_token_secret,
+        "X_BEARER_TOKEN": args.x_bearer_token,
+    }
 
+    for key, value in env_vars.items():
+        if value:
+            os.environ[key] = value
+
+
+def run_agent_server(config: dict) -> None:
+    """Run the agent server with the given configuration."""
     try:
         # Bindufy and start the agent server
         print("🚀 Starting Bindu Tweet Analysis Agent server...")
@@ -371,6 +370,24 @@ def main():
     finally:
         # Cleanup on exit
         asyncio.run(cleanup())
+
+
+def main():
+    """Run the main entry point for the Tweet Analysis Agent."""
+    parser = create_argument_parser()
+    args = parser.parse_args()
+
+    # Set environment variables from CLI args
+    set_environment_variables(args)
+
+    print("🤖 Tweet Analysis Agent - Social Media Intelligence AI")
+    print("📊 Capabilities: Tweet sentiment analysis, brand monitoring, competitive intelligence")
+
+    # Load configuration
+    config = load_config()
+
+    # Run the agent server
+    run_agent_server(config)
 
 
 if __name__ == "__main__":
