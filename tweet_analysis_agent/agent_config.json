@@ -1,0 +1,70 @@
+{
+  "author": "paras25619@gmail.com",
+  "name": "tweet-analysis-agent",
+  "description": "Tweet Analysis Agent is an AI-powered social media intelligence assistant that analyzes tweets to extract insights such as sentiment, key topics, engagement patterns, and trends. It helps users understand public opinion, monitor brand perception, track trending discussions, and make data-driven decisions from Twitter/X content.",
+  "version": "1.0.0",
+  "recreate_keys": false,
+  "skills": [
+    "skills/tweet-analysis"
+  ],
+  "capabilities": {},
+  "agent_trust": "low",
+  "debug_mode": true,
+  "debug_level": 2,
+  "deployment": {
+    "url": "http://0.0.0.0:3774",
+    "expose": true,
+    "protocol_version": "1.0.0",
+    "proxy_urls": ["0.0.0.0"],
+    "cors_origins": ["*"]
+  },
+  "storage": {
+    "type": "memory"
+  },
+  "scheduler": {
+    "type": "memory"
+  },
+  "num_history_sessions": 5,
+  "environment_variables": [
+    {
+      "key": "OPENAI_API_KEY",
+      "description": "OpenAI API key for LLM calls",
+      "required": false
+    },
+    {
+      "key": "OPENROUTER_API_KEY",
+      "description": "OpenRouter API key for LLM calls",
+      "required": false
+    },
+    {
+      "key": "MEM0_API_KEY",
+      "description": "Mem0 API key for memory operations",
+      "required": false
+    },
+    {
+      "key": "X_CONSUMER_KEY",
+      "description": "X/Twitter API consumer key",
+      "required": true
+    },
+    {
+      "key": "X_CONSUMER_SECRET",
+      "description": "X/Twitter API consumer secret",
+      "required": true
+    },
+    {
+      "key": "X_ACCESS_TOKEN",
+      "description": "X/Twitter API access token",
+      "required": true
+    },
+    {
+      "key": "X_ACCESS_TOKEN_SECRET",
+      "description": "X/Twitter API access token secret",
+      "required": true
+    },
+    {
+      "key": "X_BEARER_TOKEN",
+      "description": "X/Twitter API bearer token",
+      "required": true
+    }
+  ]
+}

@@ -1,0 +1,415 @@
+# Tweet Analysis and Social Media Intelligence Skill
+# AI-powered social media intelligence assistant for X (Twitter) analysis
+
+# Basic Metadata
+id: tweet-analysis-v1
+name: tweet-analysis
+version: 1.0.0
+author: paras25619@gmail.com
+
+# Description
+description: |
+  An AI-powered social media intelligence assistant that analyzes tweets to extract
+  insights such as sentiment, key topics, engagement patterns, and trends. It helps
+  users understand public opinion, monitor brand perception, track trending discussions,
+  and make data-driven decisions from Twitter/X content.
+
+# Tags and Modes
+tags:
+  - tweet-analysis
+  - social-media
+  - sentiment-analysis
+  - brand-monitoring
+  - competitive-intelligence
+  - social-listening
+  - x-twitter
+  - engagement-analysis
+  - trend-detection
+  - market-research
+
+input_modes:
+  - text/plain
+  - application/json
+
+output_modes:
+  - text/plain
+  - application/json
+  - text/markdown
+
+# Example Queries
+examples:
+  - "Analyze the sentiment of Agno and AgnoAGI on X (Twitter) for past 10 tweets"
+  - "Analyze sentiment around our brand on X for the past 10 tweets"
+  - "Monitor competitor mentions and compare sentiment vs our brand"
+  - "Generate a brand health report from recent social media activity"
+  - "Identify trending topics and user sentiment about our product"
+  - "Create a social media intelligence report for executive review"
+
+# Detailed Capabilities
+capabilities_detail:
+  sentiment_analysis:
+    supported: true
+    levels:
+      - per_tweet_sentiment
+      - aggregate_sentiment
+      - sentiment_trends
+    metrics:
+      - positive_sentiment
+      - negative_sentiment
+      - neutral_sentiment
+      - mixed_sentiment
+    confidence_scoring: true
+
+  engagement_analysis:
+    supported: true
+    metrics:
+      - likes
+      - retweets
+      - replies
+      - reach
+      - engagement_rate
+    analysis_types:
+      - viral_content_detection
+      - influencer_impact
+      - audience_engagement
+
+  brand_monitoring:
+    supported: true
+    features:
+      - brand_mentions
+      - competitive_comparison
+      - market_positioning
+      - reputation_management
+    alert_types:
+      - crisis_detection
+      - opportunity_identification
+      - trend_spotting
+
+  thematic_analysis:
+    supported: true
+    analysis_types:
+      - keyword_extraction
+      - topic_modeling
+      - trend_detection
+      - pain_point_identification
+    time_frames:
+      - real_time
+      - historical
+      - trend_analysis
+
+# Requirements
+requirements:
+  packages:
+    - agno>=2.2.0
+    - bindu>=2026.1.12
+    - tweepy>=4.14.0
+    - openai>=2.11.0
+    - python-dotenv>=1.0.0
+  system: []
+  min_memory_mb: 512
+  external_services:
+    - X/Twitter API
+    - OpenAI API or OpenRouter API
+
+# Performance Metrics
+performance:
+  avg_processing_time_ms: 3000
+  avg_time_per_tweet_ms: 200
+  max_concurrent_requests: 5
+  memory_per_request_mb: 512
+  timeout_seconds: 120
+  max_tweets_per_query: 100
+  scalability: horizontal
+
+# Tool Restrictions
+allowed_tools:
+  - XTools
+  - Search
+  - Analyze
+  - Generate
+  - Monitor
+  - Report
+
+# Rich Documentation
+documentation:
+  overview: |
+    This agent specializes in social media intelligence on X (Twitter), providing
+    comprehensive analysis of tweets including sentiment classification, engagement
+    metrics, brand monitoring, and competitive intelligence. It transforms raw social
+    media data into actionable business insights and executive-ready reports.
+
+    The agent excels at identifying trends, detecting potential crises, monitoring
+    brand health, and providing strategic recommendations based on social media data.
+
+  use_cases:
+    when_to_use:
+      - User needs sentiment analysis of tweets about a brand or topic
+      - User wants to monitor brand perception on social media
+      - User needs competitive intelligence from social media
+      - User requests engagement analysis of social media content
+      - User wants to identify trending topics and conversations
+      - User needs executive reports on social media performance
+      - User wants to detect potential PR crises early
+      - User needs to track influencer impact and mentions
+
+    when_not_to_use:
+      - Analyzing other social media platforms (use platform-specific agents)
+      - Deep sentiment analysis of long-form content (use text analysis agents)
+      - Real-time news monitoring (use news aggregation agents)
+      - Social media posting or engagement (use social media management agents)
+      - Image or video content analysis (use multimedia analysis agents)
+      - Historical social media data archiving (use data storage agents)
+
+  input_structure: |
+    Accepts tweet analysis queries with optional specifications:
+
+    {
+      "query": "Analysis request or brand/topic to monitor",
+      "analysis_type": "sentiment|engagement|brand|competitive|comprehensive",
+      "time_frame": "last_hour|last_day|last_week|last_month|custom",
+      "tweet_count": 10,
+      "brands": ["brand1", "brand2"],
+      "competitors": ["competitor1", "competitor2"],
+      "metrics": ["sentiment", "engagement", "trends"],
+      "report_format": "executive|detailed|dashboard"
+    }
+
+    Query constraints:
+    - Max tweet count: 100 per query
+    - Max time frame: 30 days
+    - Timeout: 120 seconds
+    - Language: English primary, multilingual support with reduced accuracy
+
+  output_format: |
+    Social Media Intelligence Report:
+    {
+      "success": true,
+      "report": {
+        "brand_health_score": 7.5,
+        "executive_summary": "Overall positive sentiment with high engagement...",
+        "sentiment_analysis": {
+          "positive": {"percentage": 60, "count": 30},
+          "negative": {"percentage": 15, "count": 8},
+          "neutral": {"percentage": 20, "count": 10},
+          "mixed": {"percentage": 5, "count": 2}
+        },
+        "engagement_analysis": {
+          "total_engagement": 12500,
+          "average_per_tweet": 250,
+          "top_performing_tweet": {
+            "content": "Tweet text...",
+            "engagement": 1500,
+            "link": "https://twitter.com/user/status/id"
+          }
+        },
+        "key_themes": [
+          {
+            "theme": "Product features",
+            "mentions": 25,
+            "sentiment": "positive",
+            "representative_tweet": "Tweet text..."
+          }
+        ],
+        "influencer_analysis": [
+          {
+            "username": "@influencer",
+            "followers": 100000,
+            "mentions": 5,
+            "engagement": 3000
+          }
+        ],
+        "risk_assessment": {
+          "potential_crises": [],
+          "critical_issues": 2,
+          "recommended_actions": ["Monitor negative sentiment clusters"]
+        },
+        "strategic_recommendations": {
+          "immediate": ["Respond to top negative tweets"],
+          "short_term": ["Engage with key influencers"],
+          "long_term": ["Develop content strategy around trending topics"]
+        }
+      },
+      "metadata": {
+        "query": "original_query",
+        "processing_time_ms": 4500,
+        "tweets_analyzed": 50,
+        "time_frame": "last_week",
+        "confidence_score": 0.85
+      }
+    }
+
+  error_handling:
+    - "API rate limits: Implements exponential backoff and request queuing"
+    - "No tweets found: Returns analysis of search patterns and suggestions"
+    - "Conflicting sentiment: Presents balanced view with evidence"
+    - "Complex query timeout: Returns partial results with completion percentage"
+    - "Authentication errors: Provides clear guidance on credential setup"
+    - "Unclear query: Asks for clarification or provides scope suggestions"
+    - "Data privacy: Anonymizes user data where appropriate"
+
+  examples:
+    - title: "Brand Sentiment Analysis"
+      input:
+        query: "Analyze sentiment around our brand on X for the past 10 tweets"
+        analysis_type: "sentiment"
+        tweet_count: 10
+        time_frame: "last_day"
+      output:
+        success: true
+        report:
+          brand_health_score: 8.2
+          executive_summary: "Strong positive sentiment with high engagement rates..."
+        metadata:
+          processing_time_ms: 3200
+          tweets_analyzed: 10
+          confidence_score: 0.92
+
+    - title: "Competitive Intelligence Report"
+      input:
+        query: "Monitor competitor mentions and compare sentiment vs our brand"
+        brands: ["our_brand"]
+        competitors: ["competitor1", "competitor2"]
+        analysis_type: "competitive"
+        time_frame: "last_week"
+      output:
+        success: true
+        report:
+          brand_health_score: 7.8
+          competitive_comparison: {
+            "our_brand": {"sentiment": 7.8, "mentions": 150},
+            "competitor1": {"sentiment": 6.5, "mentions": 200},
+            "competitor2": {"sentiment": 7.2, "mentions": 120}
+          }
+        metadata:
+          processing_time_ms: 7800
+          tweets_analyzed: 470
+          confidence_score: 0.88
+
+    - title: "Executive Social Media Report"
+      input:
+        query: "Create a social media intelligence report for executive review"
+        analysis_type: "comprehensive"
+        report_format: "executive"
+        time_frame: "last_month"
+      output:
+        success: true
+        report:
+          brand_health_score: 7.5
+          executive_summary: "Consistent growth in positive sentiment with notable engagement spikes..."
+          strategic_recommendations: {
+            "immediate": ["Address customer service complaints"],
+            "short_term": ["Launch influencer partnership program"],
+            "long_term": ["Develop thought leadership content"]
+          }
+        metadata:
+          processing_time_ms: 12500
+          tweets_analyzed: 1200
+          confidence_score: 0.90
+
+  best_practices:
+    for_developers:
+      - "Use exponential backoff for X API rate limiting"
+      - "Cache frequently analyzed topics to improve performance"
+      - "Implement sentiment confidence scoring for accuracy"
+      - "Handle multilingual content with appropriate language detection"
+      - "Monitor API usage and implement cost optimization"
+      - "Validate X credentials before attempting analysis"
+
+    for_orchestrators:
+      - "Route social media analysis queries to this agent"
+      - "Chain with reporting agents for different output formats"
+      - "Consider tweet volume when setting timeout limits"
+      - "Balance between real-time and historical analysis based on needs"
+      - "Use confidence scores for quality assurance"
+      - "Implement fallback to simpler analysis for high-volume queries"
+      - "Monitor brand mentions for crisis detection"
+
+  installation: |
+    Required packages:
+    pip install agno bindu tweepy openai python-dotenv
+
+    Environment variables:
+    OPENAI_API_KEY=your_openai_api_key
+    OPENROUTER_API_KEY=your_openrouter_api_key  # Alternative to OpenAI
+    X_CONSUMER_KEY=your_x_consumer_key
+    X_CONSUMER_SECRET=your_x_consumer_secret
+    X_ACCESS_TOKEN=your_x_access_token
+    X_ACCESS_TOKEN_SECRET=your_x_access_token_secret
+    X_BEARER_TOKEN=your_x_bearer_token
+
+    For X/Twitter API access:
+    # Get credentials from: https://developer.twitter.com/en/portal/dashboard
+    # Requires Developer account with elevated access
+
+  versioning:
+    - version: "1.0.0"
+      date: "2026-01-13"
+      changes: "Initial release with sentiment analysis, engagement metrics, and brand monitoring"
+    - version: "1.1.0"
+      status: "planned"
+      changes: "Add advanced trend detection and predictive analytics"
+    - version: "1.2.0"
+      status: "planned"
+      changes: "Enhanced multilingual support and cross-platform analysis"
+
+# Assessment fields for skill negotiation
+assessment:
+  keywords:
+    - tweet
+    - twitter
+    - x
+    - social
+    - media
+    - sentiment
+    - analysis
+    - brand
+    - monitor
+    - competitive
+    - intelligence
+    - engagement
+    - metrics
+    - trend
+    - detection
+    - listening
+    - reputation
+    - mentions
+    - influencer
+    - viral
+
+  specializations:
+    - domain: brand_monitoring
+      confidence_boost: 0.3
+    - domain: competitive_analysis
+      confidence_boost: 0.3
+    - domain: sentiment_analysis
+      confidence_boost: 0.2
+    - domain: social_media_research
+      confidence_boost: 0.2
+
+  anti_patterns:
+    - "social media posting"
+    - "content creation"
+    - "image analysis"
+    - "video analysis"
+    - "long-form text"
+    - "academic research"
+    - "financial analysis"
+    - "mathematical calculation"
+
+  complexity_indicators:
+    simple:
+      - "sentiment check"
+      - "tweet count"
+      - "basic analysis"
+      - "single brand"
+    medium:
+      - "competitor comparison"
+      - "engagement analysis"
+      - "trend identification"
+      - "multiple metrics"
+    complex:
+      - "comprehensive report"
+      - "executive briefing"
+      - "crisis detection"
+      - "predictive analytics"
+      - "multi-brand analysis"

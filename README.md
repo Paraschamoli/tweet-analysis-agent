@@ -2,344 +2,455 @@
   <img src="https://raw.githubusercontent.com/getbindu/create-bindu-agent/refs/heads/main/assets/light.svg" alt="bindu Logo" width="200">
 </p>
 
-<h1 align="center">tweet-analysis-agent</h1>
+<h1 align="center">Tweet Analysis Agent</h1>
+<h3 align="center">AI Social Media Intelligence Assistant</h3>
 
 <p align="center">
-  <strong>Tweet Analysis Agent is an AI-powered social media intelligence assistant that analyzes tweets to extract insights such as sentiment, key topics, engagement patterns, and trends. It helps users understand public opinion, monitor brand perception, track trending discussions, and make data-driven decisions from Twitter/X content.</strong>
+  <strong>Professional social media intelligence and brand monitoring powered by AI</strong><br/>
+  Real-time tweet analysis, sentiment classification, brand health monitoring, and competitive intelligence
 </p>
 
 <p align="center">
-  <a href="https://github.com/Paraschamoli/tweet-analysis-agent/actions/workflows/main.yml?query=branch%3Amain">
-    <img src="https://img.shields.io/github/actions/workflow/status/Paraschamoli/tweet-analysis-agent/main.yml?branch=main" alt="Build status">
+  <a href="https://github.com/ParasChamoli/tweet-analysis-agent/actions">
+    <img src="https://img.shields.io/github/actions/workflow/status/ParasChamoli/tweet-analysis-agent/main.yml?branch=main" alt="Build Status">
   </a>
-  <a href="https://img.shields.io/github/license/Paraschamoli/tweet-analysis-agent">
-    <img src="https://img.shields.io/github/license/Paraschamoli/tweet-analysis-agent" alt="License">
+  <a href="https://pypi.org/project/tweet-analysis-agent/">
+    <img src="https://img.shields.io/pypi/v/tweet-analysis-agent" alt="PyPI Version">
+  </a>
+  <img src="https://img.shields.io/badge/python-3.12+-blue.svg" alt="Python Version">
+  <a href="https://github.com/ParasChamoli/tweet-analysis-agent/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/ParasChamoli/tweet-analysis-agent" alt="License">
   </a>
 </p>
 
 ---
 
-## 📖 Overview
+## 🎯 What is Tweet Analysis Agent?
 
-Tweet Analysis Agent is an AI-powered social media intelligence assistant that analyzes tweets to extract insights such as sentiment, key topics, engagement patterns, and trends. It helps users understand public opinion, monitor brand perception, track trending discussions, and make data-driven decisions from Twitter/X content.. Built on the [Bindu Agent Framework](https://github.com/getbindu/bindu) for the Internet of Agents.
+An AI-powered social media intelligence assistant that analyzes tweets to extract insights such as sentiment, key topics, engagement patterns, and trends. It helps users understand public opinion, monitor brand perception, track trending discussions, and make data-driven decisions from Twitter/X content.
 
-**Key Capabilities:**
-- 🔍 [Add your key capabilities here]
-- ✅ [Add another capability]
-- 🚨 [Add another capability]
+### Key Features
+*   **🔍 Real-time Tweet Analysis** - Analyze sentiment, engagement, and trends from X/Twitter
+*   **📊 Brand Health Monitoring** - Track brand perception and competitive intelligence
+*   **📈 Engagement Metrics Analysis** - Likes, retweets, replies, and reach analytics
+*   **🎯 Sentiment Classification** - Positive/Negative/Neutral/Mixed sentiment detection
+*   **📋 Professional Reporting** - Executive-ready social media intelligence reports
+*   **⚡ Lazy Initialization** - Fast boot times, initializes on first request
+*   **🔐 Secure API Handling** - No API keys required at startup
+
+---
+
+## 🛠️ Tools & Capabilities
+
+### Built-in Tools
+*   **XTools** - X/Twitter API integration for tweet search and analysis
+*   **Real-time Analysis** - Live sentiment tracking and trend detection
+
+### Analysis Methodology
+1.  **Data Collection** - Retrieve tweets using X/Twitter API
+2.  **Sentiment Analysis** - Classify each tweet and aggregate sentiment
+3.  **Engagement Analysis** - Analyze likes, retweets, replies, and reach
+4.  **Brand Intelligence** - Monitor brand mentions and competitive positioning
+5.  **Reporting** - Generate comprehensive social media intelligence reports
+
+---
+
+> **🌐 Join the Internet of Agents**
+> Register your agent at [bindus.directory](https://bindus.directory) to make it discoverable worldwide and enable agent-to-agent collaboration. It takes 2 minutes and unlocks the full potential of your agent.
 
 ---
 
 ## 🚀 Quick Start
 
-### Prerequisites
-
-- Python 3.10+
-- [uv](https://github.com/astral-sh/uv) package manager
-- API keys for OpenRouter and Mem0 (both have free tiers)
-
-### Installation
+### 1. Clone and Setup
 
 ```bash
 # Clone the repository
-git clone https://github.com/Paraschamoli/tweet-analysis-agent.git
+git clone https://github.com/ParasChamoli/tweet-analysis-agent.git
 cd tweet-analysis-agent
 
-# Create virtual environment
-uv venv --python 3.12.9
+# Set up virtual environment with uv
+uv venv --python 3.12
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 # Install dependencies
 uv sync
+```
 
-# Configure environment
+### 2. Configure Environment
+
+```bash
+# Copy environment template
 cp .env.example .env
+
+# Edit .env and add your API keys:
+# Choose ONE LLM provider:
+# OPENAI_API_KEY=sk-...      # For OpenAI GPT-4o
+# OPENROUTER_API_KEY=sk-...  # For OpenRouter (cheaper alternative)
+
+# REQUIRED: Add X/Twitter API credentials
+# Get credentials from: https://developer.twitter.com/en/portal/dashboard
+X_CONSUMER_KEY=your_consumer_key
+X_CONSUMER_SECRET=your_consumer_secret
+X_ACCESS_TOKEN=your_access_token
+X_ACCESS_TOKEN_SECRET=your_access_token_secret
+X_BEARER_TOKEN=your_bearer_token
 ```
 
-### Configuration
-
-Edit `.env` and add your API keys:
-
-| Key | Get It From | Required |
-|-----|-------------|----------|
-| `OPENROUTER_API_KEY` | [OpenRouter](https://openrouter.ai/keys) | ✅ Yes |
-| `MEM0_API_KEY` | [Mem0 Dashboard](https://app.mem0.ai/dashboard/api-keys) | If you want to use Mem0 tools |
-
-### Run the Agent
+### 3. Run Locally
 
 ```bash
-# Start the agent
-uv run python -m tweet_analysis_agent
+# Start the tweet analysis agent
+python tweet_analysis_agent/main.py
 
-# Agent will be available at http://localhost:3773
+# Or using uv
+uv run python tweet_analysis_agent/main.py
 ```
 
-### Github Setup
-
-```bash
-# Initialize git repository and commit your code
-git init -b main
-git add .
-git commit -m "Initial commit"
-
-# Create repository on GitHub and push (replace with your GitHub username)
-gh repo create Paraschamoli/tweet-analysis-agent --public --source=. --remote=origin --push
-```
-
----
-
-## 💡 Usage
-
-### Example Queries
-
-```bash
-# Example query 1
-"[Add example query here]"
-
-# Example query 2
-"[Add another example]"
-```
-
-### Input Formats
-
-**Plain Text:**
-```
-[Describe expected input format]
-```
-
-**JSON:**
-```json
-{
-  "content": "[example content]",
-  "focus": "[example focus]"
-}
-```
-
-### Output Structure
-
-The agent returns structured output with:
-- **[Output Component 1]**: Description
-- **[Output Component 2]**: Description
-- **[Output Component 3]**: Description
-
----
-
-## 🔌 API Usage
-
-The agent exposes a RESTful API when running. Default endpoint: `http://localhost:3773` 
-
-### Quick Start
-
-For complete API documentation, request/response formats, and examples, visit:
-
-📚 **[Bindu API Reference - Send Message to Agent](https://docs.getbindu.com/api-reference/all-the-tasks/send-message-to-agent)**
-
-
-### Additional Resources
-
-- 📖 [Full API Documentation](https://docs.getbindu.com/api-reference/all-the-tasks/send-message-to-agent)
-- 📦 [Postman Collections](https://github.com/GetBindu/Bindu/tree/main/postman/collections)
-- 🔧 [API Reference](https://docs.getbindu.com)
-
----
-
-## 🎯 Skills
-
-### tweet_analysis_agent (v1.0.0)
-
-**Primary Capability:**
-- [Describe what this skill does]
-- [Add key features]
-
-**Features:**
-- [Feature 1]
-- [Feature 2]
-- [Feature 3]
-
-**Best Used For:**
-- [Use case 1]
-- [Use case 2]
-- [Use case 3]
-
-**Not Suitable For:**
-- [Anti-pattern 1]
-- [Anti-pattern 2]
-
-**Performance:**
-- Average processing time: ~[X] seconds
-- Max concurrent requests: [N]
-- Memory per request: [X]MB
-
----
-
-## 🐳 Docker Deployment
-
-### Local Docker Setup
+### 4. Test with Docker
 
 ```bash
 # Build and run with Docker Compose
 docker-compose up --build
 
-# Agent will be available at http://localhost:3773
-```
-
-### Docker Configuration
-
-The agent runs on port `3773` and requires:
-- `OPENROUTER_API_KEY` environment variable
-- `MEM0_API_KEY` environment variable
-
-Configure these in your `.env` file before running.
-
-### Production Deployment
-
-```bash
-# Use production compose file
-docker-compose -f docker-compose.prod.yml up -d
+# Access at: http://localhost:3774
 ```
 
 ---
 
-## 🌐 Deploy to bindus.directory
+## 🔧 Configuration
 
-Make your agent discoverable worldwide and enable agent-to-agent collaboration.
+### Environment Variables
+Create a `.env` file:
 
-### Setup GitHub Secrets
+```env
+# Choose ONE provider (both can be set, OpenAI takes priority)
+OPENAI_API_KEY=sk-...      # OpenAI API key
+OPENROUTER_API_KEY=sk-...  # OpenRouter API key (alternative)
 
-```bash
-# Authenticate with GitHub
-gh auth login
+# REQUIRED: X/Twitter API credentials
+X_CONSUMER_KEY=your_consumer_key
+X_CONSUMER_SECRET=your_consumer_secret
+X_ACCESS_TOKEN=your_access_token
+X_ACCESS_TOKEN_SECRET=your_access_token_secret
+X_BEARER_TOKEN=your_bearer_token
 
-# Set deployment secrets
-gh secret set BINDU_API_TOKEN --body "<your-bindu-api-key>"
-gh secret set DOCKERHUB_TOKEN --body "<your-dockerhub-token>"
+# Optional
+DEBUG=true                # Enable debug logging
+MODEL_NAME=openai/gpt-4o  # Model selection (OpenRouter only)
 ```
 
-Get your keys:
-- **Bindu API Key**: [bindus.directory](https://bindus.directory) dashboard
-- **Docker Hub Token**: [Docker Hub Security Settings](https://hub.docker.com/settings/security)
-
-### Deploy
-
-```bash
-# Push to trigger automatic deployment
-git push origin main
-```
-
-GitHub Actions will automatically:
-1. Build your agent
-2. Create Docker container
-3. Push to Docker Hub
-4. Register on bindus.directory
+### Port Configuration
+Default port: `3774` (can be changed in `agent_config.json`)
 
 ---
 
-## 🛠️ Development
+## 💡 Usage Examples
 
-### Project Structure
+### Via HTTP API
 
+```bash
+curl -X POST http://localhost:3774/chat \
+  -H "Content-Type: application/json" \
+  -d '{
+    "messages": [
+      {
+        "role": "user",
+        "content": "Analyze sentiment for tweets about climate change in the last 24 hours"
+      }
+    ]
+  }'
 ```
+
+### Sample Analysis Queries
+
+```text
+"Analyze sentiment around our brand on X for the past 10 tweets"
+"Monitor competitor mentions and compare sentiment vs our brand"
+"Generate a brand health report from recent social media activity"
+"Identify trending topics and user sentiment about our product"
+"Create a social media intelligence report for executive review"
+```
+
+### Expected Output Format
+
+```markdown
+# Social Media Intelligence Report 📊
+
+## Brand Health Score: 7.5/10
+
+## Executive Summary
+{Concise overview of brand sentiment, key findings, and overall health}
+
+## Sentiment Analysis
+- Positive Sentiment: 60% (30 tweets)
+- Negative Sentiment: 15% (8 tweets)
+- Neutral Sentiment: 20% (10 tweets)
+- Mixed Sentiment: 5% (2 tweets)
+
+## Engagement Analysis
+- Total Engagement: 12,500
+- Average Engagement per Tweet: 250
+- Top Performing Tweet: {engagement} (content preview)
+
+## Key Themes & Topics
+{Top themes with representative quotes and engagement metrics}
+
+## Influencer Impact
+{Verified accounts and influencers with significant reach}
+
+## Strategic Recommendations
+### Immediate Actions (Next 24-48 hours)
+{Priority responses and monitoring needs}
+
+### Short-term Initiatives (Next 1-2 weeks)
+{Engagement opportunities and content strategy}
+
+### Long-term Strategy (Next 1-3 months)
+{Brand positioning and competitive response}
+```
+
+---
+
+## 🐳 Docker Deployment
+
+### Quick Docker Setup
+
+```bash
+# Build the image
+docker build -t tweet-analysis-agent .
+
+# Run container
+docker run -d \
+  -p 3774:3774 \
+  -e OPENAI_API_KEY=your_key_here \
+  -e X_CONSUMER_KEY=your_consumer_key \
+  -e X_CONSUMER_SECRET=your_consumer_secret \
+  -e X_ACCESS_TOKEN=your_access_token \
+  -e X_ACCESS_TOKEN_SECRET=your_access_token_secret \
+  -e X_BEARER_TOKEN=your_bearer_token \
+  --name tweet-analysis-agent \
+  tweet-analysis-agent
+
+# Check logs
+docker logs -f tweet-analysis-agent
+```
+
+### Docker Compose (Recommended)
+
+`docker-compose.yml`:
+
+```yaml
+version: '3.8'
+services:
+  tweet-analysis-agent:
+    build: .
+    ports:
+      - "3774:3774"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - X_CONSUMER_KEY=${X_CONSUMER_KEY}
+      - X_CONSUMER_SECRET=${X_CONSUMER_SECRET}
+      - X_ACCESS_TOKEN=${X_ACCESS_TOKEN}
+      - X_ACCESS_TOKEN_SECRET=${X_ACCESS_TOKEN_SECRET}
+      - X_BEARER_TOKEN=${X_BEARER_TOKEN}
+    restart: unless-stopped
+```
+
+Run with Compose:
+
+```bash
+# Start with compose
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+```
+
+---
+
+## 📁 Project Structure
+
+```text
 tweet-analysis-agent/
 ├── tweet_analysis_agent/
 │   ├── skills/
-│   │   └── tweet_analysis_agent/
-│   │       ├── skill.yaml          # Skill configuration
-│   │       └── __init__.py
-│   ├── __init__.py
-│   ├── __main__.py
-│   ├── main.py                     # Agent entry point
-│   └── agent_config.json           # Agent configuration
-├── tests/
-│   └── test_main.py
-├── .env.example
-├── docker-compose.yml
-├── Dockerfile.agent
-└── pyproject.toml
+│   │   └── tweet-analysis/
+│   │       └── skill.yaml          # Skill configuration
+│   ├── __init__.py                 # Package initialization
+│   ├── __version__.py              # Version information
+│   └── main.py                     # Main agent implementation
+├── agent_config.json               # Bindu agent configuration
+├── pyproject.toml                  # Python dependencies
+├── Dockerfile.agent                # Multi-stage Docker build
+├── docker-compose.yml              # Docker Compose setup
+├── README.md                       # This documentation
+├── .env.example                    # Environment template
+└── tests/                          # Test files
+    └── test_main.py
 ```
 
-### Running Tests
+---
+
+## 🔌 API Reference
+
+### Health Check
 
 ```bash
-make test              # Run all tests
-make test-cov          # With coverage report
+GET http://localhost:3774/health
 ```
 
-### Code Quality
+Response:
+```json
+{"status": "healthy", "agent": "Tweet Analysis Agent"}
+```
+
+### Chat Endpoint
 
 ```bash
-make format            # Format code with ruff
-make lint              # Run linters
-make check             # Format + lint + test
+POST http://localhost:3774/chat
+Content-Type: application/json
+
+{
+  "messages": [
+    {"role": "user", "content": "Your tweet analysis query here"}
+  ]
+}
 ```
 
-### Pre-commit Hooks
+---
+
+## 🧪 Testing
+
+### Local Testing
 
 ```bash
-# Install pre-commit hooks
-uv run pre-commit install
+# Install test dependencies
+uv sync --group dev
 
-# Run manually
-uv run pre-commit run -a
+# Run tests
+pytest tests/
+
+# Test with specific API key
+OPENAI_API_KEY=test_key python -m pytest
 ```
+
+### Integration Test
+
+```bash
+# Start agent
+python tweet_analysis_agent/main.py &
+
+# Test API endpoint
+curl -X POST http://localhost:3774/chat \
+  -H "Content-Type: application/json" \
+  -d '{"messages": [{"role": "user", "content": "Analyze tweets about AI"}]}'
+```
+
+---
+
+## 🚨 Troubleshooting
+
+### Common Issues & Solutions
+
+**"ModuleNotFoundError"**
+```bash
+uv sync --force
+```
+
+**"Port 3774 already in use"**
+Change port in `agent_config.json` or kill the process:
+```bash
+lsof -ti:3774 | xargs kill -9
+```
+
+**"No API key provided"**
+Check if `.env` exists and variable names match. Or set directly:
+```bash
+export OPENAI_API_KEY=your_key
+```
+
+**"X/Twitter API credentials missing"**
+Ensure all 5 X/Twitter credentials are set in `.env`:
+```bash
+X_CONSUMER_KEY, X_CONSUMER_SECRET, X_ACCESS_TOKEN, X_ACCESS_TOKEN_SECRET, X_BEARER_TOKEN
+```
+
+**"API rate limit exceeded"**
+The agent implements exponential backoff. Wait and try again.
+
+**Docker build fails**
+```bash
+docker system prune -a
+docker-compose build --no-cache
+```
+
+---
+
+## 📊 Dependencies
+
+### Core Packages
+*   **bindu** - Agent deployment framework
+*   **agno** - AI agent framework
+*   **openai** - OpenAI client
+*   **tweepy** - X/Twitter API client
+*   **requests** - HTTP requests
+*   **rich** - Console output
+*   **python-dotenv** - Environment management
+
+### Development Packages
+*   **pytest** - Testing framework
+*   **ruff** - Code formatting/linting
+*   **pre-commit** - Git hooks
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please follow these steps:
+We welcome contributions! Please follow these steps:
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature` 
-3. Commit your changes: `git commit -m 'Add amazing feature'` 
-4. Push to the branch: `git push origin feature/amazing-feature` 
-5. Open a Pull Request
+1.  Fork the repository
+2.  Create a feature branch: `git checkout -b feature/improvement`
+3.  Make your changes following the code style
+4.  Add tests for new functionality
+5.  Commit with descriptive messages
+6.  Push to your fork
+7.  Open a Pull Request
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+**Code Style:**
+*   Follow PEP 8 conventions
+*   Use type hints where possible
+*   Add docstrings for public functions
+*   Keep functions focused and small
 
 ---
 
 ## 📄 License
+MIT License - see [LICENSE](LICENSE) file for details.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 🙏 Credits & Acknowledgments
+*   **Developer:** Paras Chamoli
+*   **Framework:** Bindu - Agent deployment platform
+*   **Agent Framework:** Agno - AI agent toolkit
+*   **Twitter API:** X/Twitter Developer Platform
 
----
+## 🔗 Useful Links
+*   🌐 **Bindu Directory:** [bindus.directory](https://bindus.directory)
+*   📚 **Bindu Docs:** [docs.getbindu.com](https://docs.getbindu.com)
+*   🐙 **GitHub:** [github.com/ParasChamoli/tweet-analysis-agent](https://github.com/ParasChamoli/tweet-analysis-agent)
+*   💬 **Discord:** Bindu Community
 
-## 🙏 Powered by Bindu
-
-Built with the [Bindu Agent Framework](https://github.com/getbindu/bindu)
-
-**Why Bindu?**
-- 🌐 **Internet of Agents**: A2A, AP2, X402 protocols for agent collaboration
-- ⚡ **Zero-config setup**: From idea to production in minutes
-- 🛠️ **Production-ready**: Built-in deployment, monitoring, and scaling
-
-**Build Your Own Agent:**
-```bash
-uvx cookiecutter https://github.com/getbindu/create-bindu-agent.git
-```
-
----
-
-## 📚 Resources
-
-- 📖 [Full Documentation](https://Paraschamoli.github.io/tweet-analysis-agent/)
-- 💻 [GitHub Repository](https://github.com/Paraschamoli/tweet-analysis-agent/)
-- 🐛 [Report Issues](https://github.com/Paraschamoli/tweet-analysis-agent/issues)
-- 💬 [Join Discord](https://discord.gg/3w5zuYUuwt)
-- 🌐 [Agent Directory](https://bindus.directory)
-- 📚 [Bindu Documentation](https://docs.getbindu.com)
-
----
+<br>
 
 <p align="center">
-  <strong>Built with 💛 by the team from Amsterdam 🌷</strong>
+  <strong>Built with ❤️ by Paras Chamoli</strong><br/>
+  <em>Transforming social media data into actionable intelligence with AI</em>
 </p>
 
 <p align="center">
-  <a href="https://github.com/Paraschamoli/tweet-analysis-agent">⭐ Star this repo</a> •
-  <a href="https://discord.gg/3w5zuYUuwt">💬 Join Discord</a> •
-  <a href="https://bindus.directory">🌐 Agent Directory</a>
+  <a href="https://github.com/ParasChamoli/tweet-analysis-agent/stargazers">⭐ Star on GitHub</a> •
+  <a href="https://bindus.directory">🌐 Register on Bindu</a> •
+  <a href="https://github.com/ParasChamoli/tweet-analysis-agent/issues">🐛 Report Issues</a>
 </p>
 
-#   t w e e t - a n a l y s i s - a g e n t  
- 
+> **Note:** This agent follows the Bindu pattern with lazy initialization and secure API key handling. It boots without API keys and only fails at runtime if keys are needed but not provided.
